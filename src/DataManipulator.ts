@@ -20,8 +20,9 @@ export class DataManipulator {
     const priceABC = (serverRespond[0].top_ask.price + serverRespond[0].top_bid.price) / 2;
     const priceDEF = (serverRespond[1].top_ask.price + serverRespond[1].top_bid.price) / 2;
     const ratio = priceABC /  priceDEF;
-    const upperBound = 1 + 0.05;
-    const lowerBound = 1 - 0.05;
+    //changed threshold from (0.05) to +/-10% (0.1) of the 12 months historical average ratio
+    const upperBound = 1 + 0.1;
+    const lowerBound = 1 - 0.1;
 
     return {
       price_abc : priceABC,
